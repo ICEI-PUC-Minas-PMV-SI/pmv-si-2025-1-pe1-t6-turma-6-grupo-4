@@ -12,7 +12,7 @@ Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo de
 
 * Nome completo do aluno 1
 * jeferson silva carvalho 2
-* Nome completo do aluno 3
+* Maria Julia Palhares Correia
 * Nome completo do aluno 4
 * Nome completo do aluno 5
 
