@@ -8,7 +8,7 @@ Layout padrão do site HTML e CSS
 
 > - Font-size: 14px - 48px 
 
-Explique as guias de estilo utilizadas no seu projeto.
+
 
 ## Design
 
