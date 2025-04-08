@@ -10,16 +10,15 @@ Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo de
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* jeferson silva carvalho 2
+* João Pedro de Oliveira Ferreira
+* Jeferson Silva Carvalho 
 * Maria Julia Palhares Correia
-* Nome completo do aluno 4
-* Nome completo do aluno 5
+* Matheus Rocha Figueiredo
 
 
 ## Orientador
 
-* Nome completo do professor 1
+* Clóvis Lemos Tavares
 
 # Planejamento
 
