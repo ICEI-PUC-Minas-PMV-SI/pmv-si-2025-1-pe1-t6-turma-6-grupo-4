@@ -4,9 +4,9 @@ Layout padrão do site HTML e CSS
 
 > - Cores:RBG: #371F61, #576CD9, #C1C1C1, #DFDFDF,
 
-> - Font-family:
+> - Font-family: Poppins
 
-> - Font-size: 
+> - Font-size: 14px - 48px 
 
 Explique as guias de estilo utilizadas no seu projeto.
 
