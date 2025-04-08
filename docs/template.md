@@ -1,6 +1,7 @@
 # Template padrão do site
 
-Layout padrão do site (HTML e CSS) que será utilizado em todas as páginas com a definição de identidade visual, aspectos de responsividade e iconografia.
+Layout padrão do site HTML e CSS 
+Cores:RBG: #371F61, #576CD9, #C1C1C1, #DFDFDF,
 
 Explique as guias de estilo utilizadas no seu projeto.
 
