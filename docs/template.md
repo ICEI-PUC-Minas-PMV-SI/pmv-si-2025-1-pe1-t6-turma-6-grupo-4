@@ -23,7 +23,43 @@ Detalhe os layouts que serão utilizados. Apresente onde será colocado o logo d
 
 ## Tipografia
 
-Apresente as fontes que serão utilizadas e sua função no site. As principais funções são: Título de página, Título de Seção, Rótulos de componentes e Corpo de Texto.
+### 📌 Título de Página
+Fonte: Poppins
+
+Peso: ExtraBold (800)
+
+Tamanho: 36px – 48px
+
+Função: Destacar o título principal da página, chamando atenção logo ao acessar.
+
+### 📌 Título de Seção
+Fonte: Poppins
+
+Peso: SemiBold (600)
+
+Tamanho: 24px – 32px
+
+Função: Dividir o conteúdo em partes claras e facilitar a navegação do usuário.
+
+### 📌 Rótulos de Componentes (botões, campos de formulário, menus)
+Fonte: Poppins
+
+Peso: Medium (500)
+
+Tamanho: 14px – 16px
+
+Função: Nomear de forma objetiva elementos interativos, mantendo clareza e consistência.
+
+### 📌 Corpo de Texto
+Fonte: Poppins
+
+Peso: Regular (400)
+
+Tamanho: 14px – 16px
+
+Função: Apresentar textos descritivos, explicações e informações com boa legibilidade. 
+
+![Design sem nome (1)](https://github.com/user-attachments/assets/d211cb68-3489-4db4-b67f-58d709358d2a)
 
 
 ## Iconografia
