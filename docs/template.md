@@ -1,7 +1,12 @@
 # Template padrão do site
 
 Layout padrão do site HTML e CSS 
-Cores:RBG: #371F61, #576CD9, #C1C1C1, #DFDFDF,
+
+> - Cores:RBG: #371F61, #576CD9, #C1C1C1, #DFDFDF,
+
+> - Font-family:
+
+> - Font-size: 
 
 Explique as guias de estilo utilizadas no seu projeto.
 
