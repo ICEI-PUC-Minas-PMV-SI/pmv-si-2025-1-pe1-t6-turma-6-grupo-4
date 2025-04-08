@@ -11,7 +11,7 @@ Detalhe os layouts que serão utilizados. Apresente onde será colocado o logo d
 
 ## Cores
 
-![AdobeColor-My Color Theme](https://github.com/user-attachments/assets/56224ce5-1f8a-4746-b944-b1609906a238)
+![abc](https://github.com/user-attachments/assets/70a6c3b5-c3b1-4390-aea4-a0cc5cd26141)
 
 
 
@@ -26,6 +26,10 @@ Defina os ícones que serão utilizados e suas respectivas funções.
 
 Apresente os estilos CSS criados para cada um dos elementos apresentados.
 Outras seções podem ser adicionadas neste documento para apresentar padrões de componentes, de menus, etc.
+
+## Logo 
+
+![Design sem nome](https://github.com/user-attachments/assets/3acde7ff-f419-4737-9e83-15f20354b93e)
 
 
 > **Links Úteis**:
