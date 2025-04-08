@@ -6,7 +6,9 @@
 
 `SEMESTRE: 1º`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+Este projeto propõe o desenvolvimento de uma aplicação web para recomendação e avaliação de jogos de tabuleiro, com o objetivo de ajudar jogadores a encontrar novas opções de forma rápida e personalizada. A plataforma permitirá o cadastro de usuários e jogos, além de oferecer um sistema de avaliação colaborativa e uma página de recomendações baseada no perfil e preferências de cada jogador.
+
+Diante do crescimento do mercado de jogos de tabuleiro, especialmente após a pandemia, a variedade de títulos disponíveis tornou o processo de escolha mais complexo e demorado. A proposta busca facilitar essa decisão, promovendo a descoberta de jogos alinhados ao interesse do usuário e incentivando o envolvimento com o hobby de forma prática e acessível.
 
 ## Integrantes
 
