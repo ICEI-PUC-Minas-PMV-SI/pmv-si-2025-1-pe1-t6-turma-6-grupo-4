@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cadastro de Contatos</title>
+    <title>Cadastro de Jogos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body onload="init()">
-    <h1>Cadastro de Contatos (CRUD)</h1>
+    <h1>Cadastro de Jogos (CRUD)</h1>
 
     <div class="container">
         <div class="row">
@@ -28,35 +28,33 @@
                 </div>
                 <div class="col-sm-8">
                     <label for="inputNome">Nome (*)</label>
-                    <input type="text" class="form-control" id="inputNome" required
-                        placeholder="Informe o nome do contato">
+                    <input type="text" class="form-control" id="inputNome" required>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-5">
-                    <label for="inputTelefone">Telefone (*)</label>
-                    <input type="text" class="form-control" id="inputTelefone" required placeholder="Telefone">
+                    <label for="inputTelefone">Gênero (*)</label>
+                    <input type="text" class="form-control" id="inputTelefone" required>
                 </div>
                 <div class="col-sm-7">
-                    <label for="inputEmail">E-mail (*)</label>
-                    <input type="email" class="form-control" id="inputEmail" required placeholder="Informe o e-mail">
+                    <label for="inputEmail">Qtd Jogadores (*)</label>
+                    <input type="email" class="form-control" id="inputEmail" required>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-6">
-                    <label for="inputCidade">Cidade</label>
-                    <input type="text" class="form-control" id="inputCidade" placeholder="Informe a cidade do contato">
+                    <label for="inputCidade">Duração Partida</label>
+                    <input type="text" class="form-control" id="inputCidade">
                 </div>
                 <div class="col-sm-6">
-                    <label for="inputCategoria">Categoria</label>
-                    <input type="text" class="form-control" id="inputCategoria" required
-                        placeholder="Informe a categoria do contato">
+                    <label for="inputCategoria">Idade</label>
+                    <input type="text" class="form-control" id="inputCategoria" required>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-12">
-                    <label for="inputSite">Web Site (*)</label>
-                    <input type="text" class="form-control" id="inputSite" required placeholder="Web Site">
+                    <label for="inputSite">Complexidade</label>
+                    <input type="text" class="form-control" id="inputSite" required>
                 </div>
             </div>
             <div class="form-group row">
@@ -83,11 +81,11 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Nome</th>
-                            <th scope="col">Telefone</th>
-                            <th scope="col">E-mail</th>
-                            <th scope="col">Cidade</th>
-                            <th scope="col">Categoria</th>
-                            <th scope="col">Site</th>
+                            <th scope="col">Gênero</th>
+                            <th scope="col">Qtd Jogadores</th>
+                            <th scope="col">Duração</th>
+                            <th scope="col">Idade</th>
+                            <th scope="col">Complexidade</th>
                         </tr>
                     </thead>
                     <tbody id="table-contatos">
