@@ -1,89 +1,74 @@
 // Trabalho Interdisciplinar 1 - Aplicações Web
-//
-// Esse módulo realiza as operações de CRUD a partir de uma API baseada no JSONServer
-// O servidor JSONServer fica hospedado na seguinte URL
-// https://jsonserver.rommelpuc.repl.co/contatos
-//
-// Para fazer o seu servidor, acesse o projeto do JSONServer no Replit, faça o 
-// fork do projeto e altere o arquivo db.json para incluir os dados do seu projeto.
-// URL Projeto JSONServer: https://replit.com/@rommelpuc/JSONServer
-//
-// Autor: Rommel Vieira Carneiro
-// Data: 03/10/2023
-
-// URL da API JSONServer - Substitua pela URL correta da sua API
-const apiUrl = 'https://206f06c1-1d9d-4805-869f-1aee322c1c18-00-3oteliflx6o43.riker.replit.dev/contatos';
-//const apiUrl = 'https://jsonserver.rommelpuc.repl.co/contatos'; 
+// CRUD para Jogos de Tabuleiro usando JSONServer
+// Adapte a URL para o endpoint /jogos na sua API JSONServer!
+const apiUrl = 'https://206f06c1-1d9d-4805-869f-1aee322c1c18-00-3oteliflx6o43.riker.replit.dev/jogos';
+// Exemplo: const apiUrl = 'https://jsonserver.rommelpuc.repl.co/jogos';
 
 function displayMessage(mensagem) {
-    msg = document.getElementById('msg');
+    const msg = document.getElementById('msg');
     msg.innerHTML = '<div class="alert alert-warning">' + mensagem + '</div>';
 }
 
-function readContato(processaDados) {
+function readJogo(processaDados) {
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
             processaDados(data);
         })
         .catch(error => {
-            console.error('Erro ao ler contatos via API JSONServer:', error);
-            displayMessage("Erro ao ler contatos");
+            console.error('Erro ao ler jogos via API JSONServer:', error);
+            displayMessage("Erro ao ler jogos");
         });
 }
 
-function createContato(contato, refreshFunction) {
+function createJogo(jogo, refreshFunction) {
     fetch(apiUrl, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(contato),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(jogo),
     })
         .then(response => response.json())
         .then(data => {
-            displayMessage("Contato inserido com sucesso");
+            displayMessage("Jogo inserido com sucesso");
             if (refreshFunction)
                 refreshFunction();
         })
         .catch(error => {
-            console.error('Erro ao inserir contato via API JSONServer:', error);
-            displayMessage("Erro ao inserir contato");
+            console.error('Erro ao inserir jogo via API JSONServer:', error);
+            displayMessage("Erro ao inserir jogo");
         });
 }
 
-function updateContato(id, contato, refreshFunction) {
+function updateJogo(id, jogo, refreshFunction) {
     fetch(`${apiUrl}/${id}`, {
         method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(contato),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(jogo),
     })
         .then(response => response.json())
         .then(data => {
-            displayMessage("Contato alterado com sucesso");
+            displayMessage("Jogo alterado com sucesso");
             if (refreshFunction)
                 refreshFunction();
         })
         .catch(error => {
-            console.error('Erro ao atualizar contato via API JSONServer:', error);
-            displayMessage("Erro ao atualizar contato");
+            console.error('Erro ao atualizar jogo via API JSONServer:', error);
+            displayMessage("Erro ao atualizar jogo");
         });
 }
 
-function deleteContato(id, refreshFunction) {
+function deleteJogo(id, refreshFunction) {
     fetch(`${apiUrl}/${id}`, {
         method: 'DELETE',
     })
         .then(response => response.json())
         .then(data => {
-            displayMessage("Contato removido com sucesso");
+            displayMessage("Jogo removido com sucesso");
             if (refreshFunction)
                 refreshFunction();
         })
         .catch(error => {
-            console.error('Erro ao remover contato via API JSONServer:', error);
-            displayMessage("Erro ao remover contato");
+            console.error('Erro ao remover jogo via API JSONServer:', error);
+            displayMessage("Erro ao remover jogo");
         });
 }
