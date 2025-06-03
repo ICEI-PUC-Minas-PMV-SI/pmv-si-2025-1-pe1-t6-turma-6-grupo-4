@@ -15,9 +15,7 @@
 
     <div class="container">
         <div class="row">
-            <div id="msg" class="col-sm-10 offset-sm-1 ">
-                <!--<div class="alert alert-warning">Contato não encontrado.</div>-->
-            </div>
+            <div id="msg" class="col-sm-10 offset-sm-1 "></div>
         </div>
 
         <form id="form-contato">
@@ -33,8 +31,15 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-5">
-                    <label for="inputTelefone">Gênero (*)</label>
-                    <input type="text" class="form-control" id="inputTelefone" required>
+                    <label>Gênero (*)</label>
+                    <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                        <label class="btn btn-outline-primary flex-fill">
+                            <input type="radio" name="genero" id="generoHomem" value="Homem" required> Homem
+                        </label>
+                        <label class="btn btn-outline-primary flex-fill">
+                            <input type="radio" name="genero" id="generoMulher" value="Mulher" required> Mulher
+                        </label>
+                    </div>
                 </div>
                 <div class="col-sm-7">
                     <label for="inputEmail">Qtd Jogadores (*)</label>
@@ -53,8 +58,15 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-12">
-                    <label for="inputSite">Complexidade</label>
-                    <input type="text" class="form-control" id="inputSite" required>
+                    <label>Complexidade</label>
+                    <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                        <label class="btn btn-outline-secondary flex-fill">
+                            <input type="radio" name="complexidade" id="complexidadeNormal" value="Normal" required> Normal
+                        </label>
+                        <label class="btn btn-outline-secondary flex-fill">
+                            <input type="radio" name="complexidade" id="complexidadeDificil" value="Difícil" required> Difícil
+                        </label>
+                    </div>
                 </div>
             </div>
             <div class="form-group row">
@@ -68,8 +80,7 @@
                     <input type="button" class="btn btn-warning" id="btnUpdate" value="Alterar">
                     <input type="button" class="btn btn-danger" id="btnDelete" value="Excluir">
                     <input type="button" class="btn btn-secondary" id="btnClear" value="Limpar Form">
-                    <a href="lista_contatos.html"><input type="button" class="btn btn-warning" id="btnClear"
-                            value="Pesquisar Contatos"></a>
+                    <a href="lista_contatos.html"><input type="button" class="btn btn-warning" id="btnClear" value="Pesquisar Contatos"></a>
                 </div>
             </div>
         </form>
@@ -104,158 +115,11 @@
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <script src="js/cadastro.js"></script>
-    <script>
-        function exibeContatos() {
-            tableContatos = document.getElementById("table-contatos");
-
-            // Remove todas as linhas do corpo da tabela
-            tableContatos.innerHTML = "";
-
-            readContato(dados => {
-                // Popula a tabela com os registros do banco de dados
-                for (i = 0; i < dados.length; i++) {
-                    let contato = dados[i];
-                    tableContatos.innerHTML += `<tr><td scope="row">${contato.id}</td>
-                                                    <td>${contato.nome}</td>
-                                                    <td>${contato.telefone}</td>
-                                                    <td>${contato.email}</td>
-                                                    <td>${contato.cidade}</td>
-                                                    <td>${contato.categoria}</td>
-                                                    <td>${contato.website}</td>
-                                                </tr>`;
-                }
-            })
-        }
-
-        function init() {
-            // Define uma variável para o formulário de contato
-            formContato = document.getElementById("form-contato");
-
-            // Adiciona funções para tratar os eventos 
-            btnInsert = document.getElementById("btnInsert");
-            btnInsert.addEventListener('click', function () {
-                // Verifica se o formulário está preenchido corretamente
-                if (!formContato.checkValidity()) {
-                    displayMessage("Preencha o formulário corretamente.");
-                    return;
-                }
-
-                // Obtem os valores dos campos do formulário
-                let campoNome = document.getElementById('inputNome').value;
-                let campoTelefone = document.getElementById('inputTelefone').value;
-                let campoEmail = document.getElementById('inputEmail').value;
-                let campoCidade = document.getElementById('inputCidade').value;
-                let campoCategoria = document.getElementById('inputCategoria').value;
-                let campoSite = document.getElementById('inputSite').value;
-
-                // Cria um objeto com os dados do contato
-                let contato = {
-                    nome: campoNome,
-                    telefone: campoTelefone,
-                    email: campoEmail,
-                    cidade: campoCidade,
-                    categoria: campoCategoria,
-                    website: campoSite
-                };
-
-                // Cria o contato no banco de dados
-                createContato(contato, exibeContatos);
-
-                // Limpa o formulario
-                formContato.reset()
-            });
-
-            // Trata o click do botão Alterar
-            btnUpdate = document.getElementById("btnUpdate");
-            btnUpdate.addEventListener('click', function () {
-                // Obtem os valores dos campos do formulário
-                let campoId = document.getElementById("inputId").value;
-                if (campoId == "") {
-                    displayMessage("Selecione antes um contato para ser alterado.");
-                    return;
-                }
-
-                // Obtem os valores dos campos do formulário
-                let campoNome = document.getElementById('inputNome').value;
-                let campoTelefone = document.getElementById('inputTelefone').value;
-                let campoEmail = document.getElementById('inputEmail').value;
-                let campoCidade = document.getElementById('inputCidade').value;
-                let campoCategoria = document.getElementById('inputCategoria').value;
-                let campoSite = document.getElementById('inputSite').value;
-
-                // Cria um objeto com os dados do contato
-                let contato = {
-                    nome: campoNome,
-                    telefone: campoTelefone,
-                    email: campoEmail,
-                    cidade: campoCidade,
-                    categoria: campoCategoria,
-                    website: campoSite
-                };
-
-                // Altera o contato no banco de dados
-                updateContato(parseInt(campoId), contato, exibeContatos);
-
-                // Limpa o formulario
-                formContato.reset()
-            });
-
-            // Trata o click do botão Excluir
-            btnDelete = document.getElementById('btnDelete');
-            btnDelete.addEventListener('click', function () {
-                let campoId = document.getElementById('inputId').value;
-                if (campoId == "") {
-                    displayMessage("Selecione um contato a ser excluído.");
-                    return;
-                }
-
-                // Exclui o contato no banco de dados
-                deleteContato(parseInt(campoId), exibeContatos);
-
-                // Limpa o formulario
-                formContato.reset()
-            });
-
-            // Trata o click do botão Listar Contatos
-            btnClear = document.getElementById('btnClear');
-            btnClear.addEventListener('click', function () {
-                formContato.reset()
-            });
-
-            // Oculta a mensagem de aviso após alguns 5 segundos
-            msg = document.getElementById('msg');
-            msg.addEventListener("DOMSubtreeModified", function (e) {
-                if (e.target.innerHTML == "") return;
-                setTimeout(function () {
-                    alert = msg.getElementsByClassName("alert");
-                    alert[0].remove();
-                }, 5000);
-            })
-
-            // Preenche o formulário quando o usuario clicar em uma linha da tabela 
-            gridContatos = document.getElementById("grid-contatos");
-            gridContatos.addEventListener('click', function (e) {
-                if (e.target.tagName == "TD") {
-
-                    // Obtem as colunas da linha selecionada na tabela
-                    let linhaContato = e.target.parentNode;
-                    colunas = linhaContato.querySelectorAll("td");
-
-                    // Preenche os campos do formulário com os dados da linha selecionada na tabela
-                    document.getElementById('inputId').value = colunas[0].innerText;
-                    document.getElementById('inputNome').value = colunas[1].innerText;
-                    document.getElementById('inputTelefone').value = colunas[2].innerText;
-                    document.getElementById('inputEmail').value = colunas[3].innerText;
-                    document.getElementById('inputCidade').value = colunas[4].innerText;
-                    document.getElementById('inputCategoria').value = colunas[5].innerText;
-                    document.getElementById('inputSite').value = colunas[6].innerText;
-                }
-            });
-
-            exibeContatos();
-        }
-    </script>
 </body>
 
 </html>
+
