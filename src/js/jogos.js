@@ -1,43 +1,3 @@
-function adicionarJogo(titulo, descricao, urlImagem) {
-  const divJogos = document.getElementById("jogos");
-
-  // Criar o container do card
-  const colunaCard = document.createElement("div");
-  colunaCard.className = "col";
-
-  const card = document.createElement("div");
-  card.className = "card h-100";
-
-  // Adicionar imagem
-  const imagemCard = document.createElement("img");
-  imagemCard.src = urlImagem;
-  imagemCard.className = "card-img-top";
-  imagemCard.alt = titulo;
-
-  // Adicionar corpo do card
-  const corpoCard = document.createElement("div");
-  corpoCard.className = "card-body";
-
-  const tituloCard = document.createElement("h5");
-  tituloCard.className = "card-title";
-  tituloCard.textContent = titulo;
-
-  const textoCard = document.createElement("p");
-  textoCard.className = "card-text";
-  textoCard.textContent = descricao;
-
-  // Anexar elementos
-  corpoCard.appendChild(tituloCard);
-  corpoCard.appendChild(textoCard);
-  card.appendChild(imagemCard);
-  card.appendChild(corpoCard);
-  colunaCard.appendChild(card);
-
-  // Anexar o card à div jogos
-  const linha = divJogos.querySelector(".row");
-  linha.appendChild(colunaCard);
-}
-
 // const jogos = [
 //   {
 //     nome: "Coup",
@@ -151,4 +111,69 @@ const jogos = [
   //   ],
   // },
 ];
-jogos.forEach((jogo) => adicionarJogo(jogo.nome, jogo.descricao, jogo.imagem));
+const carregaJogos = (jogos) => {
+  jogos.forEach((jogo) =>
+    adicionarJogo(jogo.nome, jogo.descricao, jogo.imagem),
+  );
+};
+
+function adicionarJogo(titulo, descricao, urlImagem) {
+  // Criar o container do card
+  const colunaCard = document.createElement("div");
+  colunaCard.className = "col";
+
+  const card = document.createElement("div");
+  card.className = "card h-100";
+
+  // Adicionar imagem
+  const imagemCard = document.createElement("img");
+  imagemCard.src = urlImagem;
+  imagemCard.className = "card-img-top";
+  imagemCard.alt = titulo;
+
+  // Adicionar corpo do card
+  const corpoCard = document.createElement("div");
+  corpoCard.className = "card-body";
+
+  const tituloCard = document.createElement("h5");
+  tituloCard.className = "card-title";
+  tituloCard.textContent = titulo;
+
+  const textoCard = document.createElement("p");
+  textoCard.className = "card-text";
+  textoCard.textContent = descricao;
+
+  // Anexar elementos
+  corpoCard.appendChild(tituloCard);
+  corpoCard.appendChild(textoCard);
+  card.appendChild(imagemCard);
+  card.appendChild(corpoCard);
+  colunaCard.appendChild(card);
+
+  // Anexar o card à div jogos
+  const lista = document.getElementById("lista");
+  lista.appendChild(colunaCard);
+}
+
+const limpaJogos = () => {
+  const divJogos = document.getElementById("jogos");
+  const linha = divJogos.querySelector(".row");
+  linha.innerHTML = "";
+};
+
+carregaJogos(jogos);
+
+const filtraJogos = (jogos, nome) => {
+  return jogos.filter((jogo) =>
+    jogo.nome.toLowerCase().startsWith(nome.toLowerCase()),
+  );
+};
+
+document.getElementById("filtro").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const nome = document.getElementById("nome-jogo").value;
+  limpaJogos();
+  const jogosFiltrados = filtraJogos(jogos, nome);
+  console.log(jogosFiltrados);
+  carregaJogos(jogosFiltrados);
+});
