@@ -29,6 +29,7 @@ const jogos = [
       "Construção de rotas",
       "Rolagem de dados",
     ],
+    num_jogadores: "3-4",
   },
   {
     nome: "Ticket to Ride",
@@ -37,36 +38,15 @@ const jogos = [
     imagem:
       "https://cf.geekdo-images.com/ZWJg0dCdrWHxVnc0eFXK8w__itemrep/img/iiTIuTtuneM3tbDCjALecsgyizA=/fit-in/246x300/filters:strip_icc()/pic38668.jpg",
     generos: ["Construção de rotas", "Coleção de componentes", "Gestão de mão"],
+    num_jogadores: "2-5",
   },
-  // {
-  //   nome: "Carcassonne",
-  //   descricao: "Coloque peças para construir cidades, estradas e campos.",
-  //   imagem:
-  //     "https://cf.geekdo-images.com/nG0jRhT4ZLJMPml5nULV6A__itemrep/img/lXp9NBoRMUt8KnJ7ksquqS4-vvE=/fit-in/246x300/filters:strip_icc()/pic5444753.jpg",
-  //   generos: [
-  //     "Colocação de peças",
-  //     "Controle/área de influência",
-  //     "Tabuleiro modular",
-  //   ],
-  // },
-  // {
-  //   nome: "Pandemic",
-  //   descricao: "Trabalhe em equipe para conter surtos de doenças no mundo.",
-  //   imagem:
-  //     "https://cf.geekdo-images.com/S3ybV1LAp-8SnHIXLLjVqA__itemrep/img/wAMLbgihOl7dJDHnvqt7OXKEV-4=/fit-in/246x300/filters:strip_icc()/pic1534148.jpg",
-  //   generos: [
-  //     "Cooperativo",
-  //     "Gestão de mão",
-  //     "Alocação de trabalhadores",
-  //     "Movimento em pontos",
-  //   ],
-  // },
   {
     nome: "Dixit",
     descricao: "Use pistas criativas para fazer outros adivinharem sua carta.",
     imagem:
       "https://cf.geekdo-images.com/J0PlHArkZDJ57H-brXW2Fw__itemrep/img/tsmN3sAHJ6trDaWNbq08BZXtq7g=/fit-in/246x300/filters:strip_icc()/pic6738336.jpg",
     generos: ["Seleção de cartas", "Aposta", "Gestão de mão"],
+    num_jogadores: "3-6",
   },
   {
     nome: "Azul",
@@ -75,6 +55,7 @@ const jogos = [
     imagem:
       "https://cf.geekdo-images.com/aPSHJO0d0XOpQR5X-wJonw__opengraph_left/img/GOB-1CMPSNUPEv8PjpZn8lSM9Es=/fit-in/445x445/filters:strip_icc()/pic6973671.png",
     generos: ["Construção de padrão", "Draft (escolha/seleção) de componentes"],
+    num_jogadores: "2-4",
   },
   {
     nome: "7 Wonders",
@@ -87,6 +68,7 @@ const jogos = [
       "Construção de baralho/peças",
       "Coleção de componentes",
     ],
+    num_jogadores: "3-7",
   },
   // {
   //   nome: "Coup",
@@ -156,24 +138,59 @@ function adicionarJogo(titulo, descricao, urlImagem) {
 }
 
 const limpaJogos = () => {
-  const divJogos = document.getElementById("jogos");
-  const linha = divJogos.querySelector(".row");
-  linha.innerHTML = "";
+  const lista = document.getElementById("lista");
+  lista.innerHTML = "";
+};
+
+const alimentaSelect = (selectID, values) => {
+  const select = document.getElementById(selectID);
+  [...new Set(values)].forEach((value) => {
+    let option = document.createElement("option");
+    option.value = value;
+    option.textContent = value;
+    select.appendChild(option);
+  });
+};
+
+const alimentaOpcoes = (jogos) => {
+  const numJogadores = [];
+  const generos = [];
+  for (const jogo of jogos) {
+    numJogadores.push(jogo.num_jogadores);
+    generos.push(...jogo.generos);
+  }
+  console.log(numJogadores);
+
+  alimentaSelect("num-jogadores", numJogadores.sort());
+  alimentaSelect("generos", generos.sort());
 };
 
 carregaJogos(jogos);
+alimentaOpcoes(jogos);
 
-const filtraJogos = (jogos, nome) => {
-  return jogos.filter((jogo) =>
-    jogo.nome.toLowerCase().startsWith(nome.toLowerCase()),
-  );
+const filtraJogos = (jogos, nome, numJogadores, genero) => {
+  let jogosFiltrados = [];
+  for (const jogo of jogos) {
+    if (nome && !jogo.nome.toLowerCase().includes(nome.toLowerCase())) {
+      continue;
+    }
+    if (numJogadores && jogo.num_jogadores !== numJogadores) {
+      continue;
+    }
+    if (genero && !jogo.generos.includes(genero)) {
+      continue;
+    }
+    jogosFiltrados.push(jogo);
+  }
+  return jogosFiltrados;
 };
 
 document.getElementById("filtro").addEventListener("submit", (event) => {
   event.preventDefault();
-  const nome = document.getElementById("nome-jogo").value;
   limpaJogos();
-  const jogosFiltrados = filtraJogos(jogos, nome);
-  console.log(jogosFiltrados);
+  const nome = document.getElementById("nome-jogo").value;
+  const numJogadores = document.getElementById("num-jogadores").value;
+  const genero = document.getElementById("generos").value;
+  const jogosFiltrados = filtraJogos(jogos, nome, numJogadores, genero);
   carregaJogos(jogosFiltrados);
 });
