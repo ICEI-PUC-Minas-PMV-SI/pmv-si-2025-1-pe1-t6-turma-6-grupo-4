@@ -82,12 +82,12 @@
             <input class="form-control" id="qtd-jogadores" required />
           </div>
           <div class="mb-3">
-            <label for="foto" class="form-label">Foto</label>
+            <label for="foto" class="form-label">Foto URL</label>
             <input
               class="form-control"
-              type="file"
+              type="url"
               id="foto"
-              accept="image/*"
+              pattern=".*\.(pn|jpe?)g$"
               required
             />
           </div>
