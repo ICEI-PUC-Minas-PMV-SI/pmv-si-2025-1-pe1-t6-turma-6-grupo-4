@@ -64,11 +64,12 @@
               class="form-control"
               id="nome"
               aria-describedby="emailhelp"
+              required
             />
           </div>
           <div class="mb-3">
             <label for="categoria" class="form-label">Categoria</label>
-            <select id="categoria" class="form-select">
+            <select id="categoria" class="form-select" required>
               <option value="" disabled selected>
                 Selecione uma categoria
               </option>
@@ -78,7 +79,7 @@
             <label for="qtd-jogadores" class="form-label"
               >Quantidade de Jogadores</label
             >
-            <input class="form-control" id="qtd-jogadores" />
+            <input class="form-control" id="qtd-jogadores" required />
           </div>
           <div class="mb-3">
             <label for="foto" class="form-label">Foto</label>
@@ -87,11 +88,17 @@
               type="file"
               id="foto"
               accept="image/*"
+              required
             />
           </div>
           <div class="mb-3">
             <label for="descricao" class="form-label">Descrição</label>
-            <textarea class="form-control" id="descricao" rows="3"></textarea>
+            <textarea
+              class="form-control"
+              id="descricao"
+              rows="3"
+              required
+            ></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Cadastrar</button>
         </form>
