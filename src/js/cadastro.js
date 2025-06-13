@@ -53,13 +53,13 @@ const carregaCategorias = () => {
 };
 carregaCategorias();
 
-const salvarJogo = (nome, categoria, qtdJogadores, descricao, fotoUrl) => {
+const salvarJogo = (nome, categoria, qtdJogadores, descricao, imagemUrl) => {
   const jogo = {
     nome,
     categoria,
     qtdJogadores,
     descricao,
-    foto: fotoUrl,
+    imagem: imagemUrl,
   };
   const jogos = JSON.parse(localStorage.getItem("jogos") || "[]");
   jogos.push(jogo);
@@ -75,7 +75,7 @@ form.addEventListener("submit", function (e) {
   const categoria = document.getElementById("categoria").value;
   const qtdJogadores = document.getElementById("qtd-jogadores").value;
   const descricao = document.getElementById("descricao").value;
-  const fotoUrl = document.getElementById("foto").value;
+  const imagemUrl = document.getElementById("imagem").value;
 
-  salvarJogo(nome, categoria, qtdJogadores, descricao, fotoUrl);
+  salvarJogo(nome, categoria, qtdJogadores, descricao, imagemUrl);
 });
