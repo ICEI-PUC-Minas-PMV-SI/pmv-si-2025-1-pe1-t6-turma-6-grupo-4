@@ -16,7 +16,6 @@ const validarQuantidade = (quantidades) => {
 const inputQtd = document.getElementById("qtd-jogadores");
 inputQtd.addEventListener("input", () => {
   const quantidades = inputQtd.value.split("-");
-  console.log(quantidades);
   if (!validarQuantidade(quantidades)) {
     inputQtd.setCustomValidity("Quantidade inválida. Ex: 1, 2-5.");
   } else {
@@ -53,3 +52,30 @@ const carregaCategorias = () => {
   });
 };
 carregaCategorias();
+
+const salvarJogo = (nome, categoria, qtdJogadores, descricao, fotoUrl) => {
+  const jogo = {
+    nome,
+    categoria,
+    qtdJogadores,
+    descricao,
+    foto: fotoUrl,
+  };
+  const jogos = JSON.parse(localStorage.getItem("jogos") || "[]");
+  jogos.push(jogo);
+  localStorage.setItem("jogos", JSON.stringify(jogos));
+  form.reset();
+};
+
+const form = document.querySelector("form");
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const nome = document.getElementById("nome").value;
+  const categoria = document.getElementById("categoria").value;
+  const qtdJogadores = document.getElementById("qtd-jogadores").value;
+  const descricao = document.getElementById("descricao").value;
+  const fotoUrl = document.getElementById("foto").value;
+
+  salvarJogo(nome, categoria, qtdJogadores, descricao, fotoUrl);
+});
