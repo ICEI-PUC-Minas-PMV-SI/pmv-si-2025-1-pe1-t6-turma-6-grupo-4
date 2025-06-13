@@ -1,103 +1,18 @@
-// const jogos = [
-//   {
-//     nome: "Coup",
-//     descricao:
-//       "Em Coup, você quer ser o último jogador com influência no jogo. A influência é representada por cartas de personagens com a face para baixo em sua área de jogo.",
-//     imagem:
-//       "https://cf.geekdo-images.com/MWhSY_GOe2-bmlQ2rntSVg__itemrep/img/QRw3T5XGsrRs-QKCSpzwE7nFqOg=/fit-in/246x300/filters:strip_icc()/pic2016054.jpg",
-//   },
-//   {
-//     nome: "Terraforming Mars",
-//     descricao:
-//       "Em Terraforming Mars, nos anos de 2400, a humanidade começa a terraformar o planeta Marte. Corporações gigantes, patrocinadas pelo Governo Mundial na Terra, iniciam grandes projetos para aumentar a temperatura, o nível de oxigênio e a cobertura do oceano até que o ambiente se torne habitável.",
-//     imagem:
-//       "https://cf.geekdo-images.com/wg9oOLcsKvDesSUdZQ4rxw__itemrep/img/IwUOQfhP5c0KcRJBY4X_hi3LpsY=/fit-in/246x300/filters:strip_icc()/pic3536616.jpg",
-//   },
-// ];
-
-const jogos = [
-  {
-    nome: "Catan",
-    descricao:
-      "Jogo de negociação e construção onde jogadores colonizam uma ilha.",
-    imagem:
-      "https://cf.geekdo-images.com/PyUol9QxBnZQCJqZI6bmSA__itemrep/img/zUs-jB7S9JTuLPOcY9pUxaqYNqA=/fit-in/246x300/filters:strip_icc()/pic8632666.png",
-    generos: [
-      "Negociação",
-      "Gestão de mão",
-      "Tabuleiro modular",
-      "Construção de rotas",
-      "Rolagem de dados",
-    ],
-    num_jogadores: "3-4",
-  },
-  {
-    nome: "Ticket to Ride",
-    descricao:
-      "Compita para construir rotas de trens e completar objetivos secretos.",
-    imagem:
-      "https://cf.geekdo-images.com/ZWJg0dCdrWHxVnc0eFXK8w__itemrep/img/iiTIuTtuneM3tbDCjALecsgyizA=/fit-in/246x300/filters:strip_icc()/pic38668.jpg",
-    generos: ["Construção de rotas", "Coleção de componentes", "Gestão de mão"],
-    num_jogadores: "2-5",
-  },
-  {
-    nome: "Dixit",
-    descricao: "Use pistas criativas para fazer outros adivinharem sua carta.",
-    imagem:
-      "https://cf.geekdo-images.com/J0PlHArkZDJ57H-brXW2Fw__itemrep/img/tsmN3sAHJ6trDaWNbq08BZXtq7g=/fit-in/246x300/filters:strip_icc()/pic6738336.jpg",
-    generos: ["Seleção de cartas", "Aposta", "Gestão de mão"],
-    num_jogadores: "3-6",
-  },
-  {
-    nome: "Azul",
-    descricao:
-      "Crie padrões bonitos ao selecionar e posicionar peças de azulejos.",
-    imagem:
-      "https://cf.geekdo-images.com/aPSHJO0d0XOpQR5X-wJonw__opengraph_left/img/GOB-1CMPSNUPEv8PjpZn8lSM9Es=/fit-in/445x445/filters:strip_icc()/pic6973671.png",
-    generos: ["Construção de padrão", "Draft (escolha/seleção) de componentes"],
-    num_jogadores: "2-4",
-  },
-  {
-    nome: "7 Wonders",
-    descricao:
-      "Desenvolva sua civilização escolhendo cartas para construir maravilhas.",
-    imagem:
-      "https://cf.geekdo-images.com/35h9Za_JvMMMtx_92kT0Jg__itemrep/img/EUlr4of74-i75S-jIrgNfaQ3M6Q=/fit-in/246x300/filters:strip_icc()/pic7149798.jpg",
-    generos: [
-      "Draft (escolha/seleção) de cartas",
-      "Construção de baralho/peças",
-      "Coleção de componentes",
-    ],
-    num_jogadores: "3-7",
-  },
-  // {
-  //   nome: "Coup",
-  //   descricao:
-  //     "Jogo de blefe onde cada jogador tenta eliminar os outros usando influência.",
-  //   imagem:
-  //     "https://cf.geekdo-images.com/MWhSY_GOe2-bmlQ2rntSVg__itemrep/img/QRw3T5XGsrRs-QKCSpzwE7nFqOg=/fit-in/246x300/filters:strip_icc()/pic2016054.jpg",
-  //   generos: ["Blefe", "Eliminação de jogadores"],
-  // },
-  // {
-  //   nome: "Terraforming Mars",
-  //   descricao:
-  //     "Compita para terraformar Marte com cartas e projetos especiais.",
-  //
-  //   imagem:
-  //     "https://cf.geekdo-images.com/wg9oOLcsKvDesSUdZQ4rxw__itemrep/img/IwUOQfhP5c0KcRJBY4X_hi3LpsY=/fit-in/246x300/filters:strip_icc()/pic3536616.jpg",
-  //   generos: [
-  //     "Construção de baralho/peças",
-  //     "Gestão de mão",
-  //     "Gestão de recursos",
-  //     "Tabuleiro modular",
-  //   ],
-  // },
-];
 const carregaJogos = (jogos) => {
   jogos.forEach((jogo) =>
     adicionarJogo(jogo.nome, jogo.descricao, jogo.imagem),
   );
 };
+
+function carregaJogosLocalStorage() {
+  const jogosSalvos = localStorage.getItem("jogos");
+  if (jogosSalvos) {
+    return JSON.parse(jogosSalvos);
+  }
+  return [];
+}
+
+carregaJogosLocalStorage();
 
 function adicionarJogo(titulo, descricao, urlImagem) {
   // Criar o container do card
@@ -165,6 +80,7 @@ const alimentaOpcoes = (jogos) => {
   alimentaSelect("generos", generos.sort());
 };
 
+jogos = carregaJogosLocalStorage();
 carregaJogos(jogos);
 alimentaOpcoes(jogos);
 
