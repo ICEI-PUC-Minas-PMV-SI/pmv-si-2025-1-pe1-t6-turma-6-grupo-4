@@ -23,3 +23,33 @@ inputQtd.addEventListener("input", () => {
     inputQtd.setCustomValidity("");
   }
 });
+
+const carregaCategorias = () => {
+  const categorias = [
+    "Carteado",
+    "Colecionável",
+    "Destreza",
+    "Dungeon Crawler",
+    "Estratégia Abstrata",
+    "Expansão ou Suplemento",
+    "Imprima e Jogue",
+    "Jogo Assimétrico",
+    "Jogo de Cartas",
+    "Jogo de Dados",
+    "Jogo de Entrada",
+    "Jogo de Guerra",
+    "Jogo Festivo",
+    "Livro-jogo",
+    "Miniaturas",
+    "Quebra-Cabeça",
+    "Trivia",
+  ];
+  const categoriaSelect = document.getElementById("categoria");
+  categorias.forEach((categoria) => {
+    const option = document.createElement("option");
+    option.value = categoria;
+    option.textContent = categoria;
+    categoriaSelect.appendChild(option);
+  });
+};
+carregaCategorias();
