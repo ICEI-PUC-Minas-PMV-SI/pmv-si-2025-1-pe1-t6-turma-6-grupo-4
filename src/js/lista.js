@@ -69,22 +69,21 @@ const alimentaSelect = (selectID, values) => {
 
 const alimentaOpcoes = (jogos) => {
   const numJogadores = [];
-  const generos = [];
+  const categorias = [];
   for (const jogo of jogos) {
-    numJogadores.push(jogo.num_jogadores);
-    generos.push(...jogo.generos);
+    numJogadores.push(jogo.qtdJogadores);
+    categorias.push(jogo.categoria);
   }
-  console.log(numJogadores);
 
   alimentaSelect("num-jogadores", numJogadores.sort());
-  alimentaSelect("generos", generos.sort());
+  alimentaSelect("categoria", categorias.sort());
 };
 
 jogos = carregaJogosLocalStorage();
 carregaJogos(jogos);
 alimentaOpcoes(jogos);
 
-const filtraJogos = (jogos, nome, numJogadores, genero) => {
+const filtraJogos = (jogos, nome, numJogadores, categoria) => {
   let jogosFiltrados = [];
   for (const jogo of jogos) {
     if (nome && !jogo.nome.toLowerCase().includes(nome.toLowerCase())) {
@@ -93,7 +92,7 @@ const filtraJogos = (jogos, nome, numJogadores, genero) => {
     if (numJogadores && jogo.num_jogadores !== numJogadores) {
       continue;
     }
-    if (genero && !jogo.generos.includes(genero)) {
+    if (categoria && jogo.categoria !== categoria) {
       continue;
     }
     jogosFiltrados.push(jogo);
@@ -106,7 +105,7 @@ document.getElementById("filtro").addEventListener("submit", (event) => {
   limpaJogos();
   const nome = document.getElementById("nome-jogo").value;
   const numJogadores = document.getElementById("num-jogadores").value;
-  const genero = document.getElementById("generos").value;
-  const jogosFiltrados = filtraJogos(jogos, nome, numJogadores, genero);
+  const categoria = document.getElementById("categoria").value;
+  const jogosFiltrados = filtraJogos(jogos, nome, numJogadores, categoria);
   carregaJogos(jogosFiltrados);
 });
