@@ -83,7 +83,7 @@ jogos = carregaJogosLocalStorage();
 carregaJogos(jogos);
 alimentaOpcoes(jogos);
 
-const filtraJogos = (jogos, nome, numJogadores, categoria) => {
+const filtraJogos = (jogos, nome, numJogadores, categoria, avaliado) => {
   let jogosFiltrados = [];
   for (const jogo of jogos) {
     if (nome && !jogo.nome.toLowerCase().includes(nome.toLowerCase())) {
@@ -93,6 +93,9 @@ const filtraJogos = (jogos, nome, numJogadores, categoria) => {
       continue;
     }
     if (categoria && jogo.categoria !== categoria) {
+      continue;
+    }
+    if (avaliado && !jogo.avaliacao) {
       continue;
     }
     jogosFiltrados.push(jogo);
@@ -106,6 +109,13 @@ document.getElementById("filtro").addEventListener("submit", (event) => {
   const nome = document.getElementById("nome-jogo").value;
   const numJogadores = document.getElementById("num-jogadores").value;
   const categoria = document.getElementById("categoria").value;
-  const jogosFiltrados = filtraJogos(jogos, nome, numJogadores, categoria);
+  const avaliado = document.getElementById("avaliado").checked;
+  const jogosFiltrados = filtraJogos(
+    jogos,
+    nome,
+    numJogadores,
+    categoria,
+    avaliado,
+  );
   carregaJogos(jogosFiltrados);
 });
