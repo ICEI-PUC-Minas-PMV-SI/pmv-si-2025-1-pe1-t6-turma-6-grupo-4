@@ -34,7 +34,11 @@ function adicionarJogo(titulo, descricao, urlImagem) {
 
   const tituloCard = document.createElement("h5");
   tituloCard.className = "card-title";
-  tituloCard.textContent = titulo;
+
+  const link = document.createElement("a");
+  link.href = `jogo?nome=${titulo.toLowerCase().replaceAll(" ", "-")}`;
+  link.textContent = titulo;
+  tituloCard.appendChild(link);
 
   const textoCard = document.createElement("p");
   textoCard.className = "card-text";
