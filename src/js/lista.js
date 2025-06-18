@@ -93,7 +93,7 @@ const filtraJogos = (jogos, nome, numJogadores, categoria, avaliado) => {
     if (nome && !jogo.nome.toLowerCase().includes(nome.toLowerCase())) {
       continue;
     }
-    if (numJogadores && jogo.num_jogadores !== numJogadores) {
+    if (numJogadores && jogo.qtdJogadores !== numJogadores) {
       continue;
     }
     if (categoria && jogo.categoria !== categoria) {
