@@ -1,6 +1,5 @@
 const params = new URLSearchParams(window.location.search);
 const nomeJogo = params.get("nome");
-document.title = nomeJogo[0].toUpperCase() + nomeJogo.slice(1).toLowerCase();
 
 document.getElementsByTagName("title");
 
@@ -9,6 +8,8 @@ const jogos = JSON.parse(localStorage.getItem("jogos") || "[]");
 const slug = (nome) => nome.toLowerCase().replaceAll(" ", "-");
 const idJogo = jogos.findIndex((j) => slug(j.nome) === slug(nomeJogo));
 const jogo = jogos[idJogo];
+
+document.title = jogo.nome[0].toUpperCase() + jogo.nome.slice(1).toLowerCase();
 
 const mostraAvaliacao = (nota) => {
   const radio = document.getElementById(`star-${nota}`);
