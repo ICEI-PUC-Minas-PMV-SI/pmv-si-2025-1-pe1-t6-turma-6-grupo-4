@@ -15,7 +15,7 @@ loginForm.addEventListener("submit", function (event) {
   localStorage.setItem("usuario", JSON.stringify(usuarioValido));
 
   if (usuarioValido) {
-    window.location.href = "lista.html";
+    window.location.href = "/";
   } else {
     alert("Email ou senha inválidos.");
   }
