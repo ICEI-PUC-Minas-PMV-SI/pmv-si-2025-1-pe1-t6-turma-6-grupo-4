@@ -12,9 +12,8 @@ loginForm.addEventListener("submit", function (event) {
     (usuario) => usuario.email === email && usuario.senha === senha,
   );
 
-  localStorage.setItem("usuario", JSON.stringify(usuarioValido));
-
   if (usuarioValido) {
+    localStorage.setItem("usuario", JSON.stringify(usuarioValido));
     window.location.href = "/";
   } else {
     alert("Email ou senha inválidos.");

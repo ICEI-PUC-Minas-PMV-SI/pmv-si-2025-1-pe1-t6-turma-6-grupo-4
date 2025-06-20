@@ -55,14 +55,22 @@
               type="email"
               class="form-control"
               id="email"
-              aria-describedby="emailHelp"
+              aria-describedby="email"
+              required
             />
           </div>
           <div class="mb-3">
             <label for="senha" class="form-label">Senha</label>
-            <input type="password" class="form-control" id="senha" />
+            <input type="password" class="form-control" id="senha" required />
           </div>
           <button type="submit" class="btn btn-primary">Login</button>
+          <button
+            type="button"
+            onclick="window.location.href = 'cadastro-usuario.html'"
+            class="btn btn-secondary"
+          >
+            Cadastro
+          </button>
         </form>
       </div>
     </div>

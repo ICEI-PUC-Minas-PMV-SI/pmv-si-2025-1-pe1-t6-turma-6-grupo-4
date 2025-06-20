@@ -9,10 +9,15 @@ form.addEventListener("submit", function (event) {
   const senha = document.getElementById("senha").value;
 
   const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+  const usuarioExistente = usuarios.findIndex((u) => u.email === email);
+  if (usuarioExistente !== -1) {
+    alert("Usuário já cadastrado com este email.");
+    return;
+  }
 
   usuarios.push({ nome, email, senha });
 
   localStorage.setItem("usuarios", JSON.stringify(usuarios));
 
-  form.reset();
+  window.location.href = "/login.html";
 });

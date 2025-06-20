@@ -1,3 +1,7 @@
+if (!localStorage.getItem("usuario")) {
+  window.location.href = "/login.html";
+}
+
 const validarQuantidade = (quantidades) => {
   if (quantidades.length > 2) {
     return false;

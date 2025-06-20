@@ -32,6 +32,9 @@ const avaliacaoInputs = document.querySelectorAll(
 );
 avaliacaoInputs.forEach((input) => {
   input.addEventListener("change", (event) => {
+    if (!localStorage.getItem("usuario")) {
+      window.location.href = "/login.html";
+    }
     jogo.avaliacao = parseInt(event.target.value);
     jogos[idJogo] = jogo;
     localStorage.setItem("jogos", JSON.stringify(jogos));
