@@ -17,7 +17,7 @@ carregaJogosLocalStorage();
 function adicionarJogo(titulo, descricao, urlImagem) {
   // Criar o container do card
   const colunaCard = document.createElement("div");
-  colunaCard.className = "col";
+  colunaCard.className = "col mb-5";
 
   const card = document.createElement("div");
   card.className = "card h-100";

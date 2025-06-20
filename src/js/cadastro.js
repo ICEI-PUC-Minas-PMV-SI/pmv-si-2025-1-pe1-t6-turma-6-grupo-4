@@ -82,4 +82,5 @@ form.addEventListener("submit", function (e) {
   const imagemUrl = document.getElementById("imagem").value;
 
   salvarJogo(nome, categoria, qtdJogadores, descricao, imagemUrl);
+  window.location.href = `/jogo.html?nome=${nome.toLowerCase().replaceAll(" ", "-")}`;
 });
