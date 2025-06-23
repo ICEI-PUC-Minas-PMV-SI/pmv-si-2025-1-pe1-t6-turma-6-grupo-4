@@ -2,19 +2,19 @@
 # Visit https://bit.ly/cffinit to generate yours today!
 
 cff-version: 1.2.0
-title: Web Application Template
+title: Jogos de Tabuleiro
 message: >-
   Repositório padrão para o Eixo 1 - Projeto 1: Aplicações
   Web da PUC Minas.
 type: software
 authors:
-  - given-names: Aluno 1
-    family-names: Nome Completo
+  - given-names: Aluno 1, Aluno 2, Aluno 3, Aluno 4
+    family-names: João Pedro de Oliveira Ferreira, Jeferson Silva Carvalho, Maria Julia Palhares Correia, Matheus Rocha Figueiredo
     email: aluno@pucminas.br
     affiliation: PUC Minas
-  - given-names: Hugo
+  - given-names: Clóvis
     name-particle: 'B '
-    family-names: de Paula
+    family-names: Lemos Tavares
     name-suffix: Prof.
     email: hugo@pucminas.br
     affiliation: PUC Minas
@@ -25,9 +25,10 @@ abstract: >-
   Descrever resumidamente, em um ou dois parágrafos, o
   projeto que foi desenvolvido.
 keywords:
-  - Desenvolvimento Web
-  - HTML
-  - CSS
-  - JavaScript
-  - Template
-date-released: '2024-06-23'
+plataforma de cadastro e procura de jogos, onde é possivel filtra e classificar jogos.
+  - Jogos de Tabuleiro
+  - HTML 64,4%
+  - CSS 1,5%
+  - JavaScript 34,1%
+  - Tememplate: jogos de tabuleiro. Disponível em: https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2025-1-pe1-t6-turma-6-grupo-4.git
+date-released: '2025-06-23'
